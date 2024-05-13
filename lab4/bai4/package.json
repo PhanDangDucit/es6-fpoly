@@ -1,0 +1,13 @@
+{
+  "name": "bai4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "npx json-server --watch db.json --port 3005"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
