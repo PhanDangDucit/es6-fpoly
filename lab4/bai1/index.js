@@ -23,4 +23,7 @@ let promise2 = new Promise(
 );
 const immediateLogPromise = Promise.all([promise1, promise2]);
 
-immediateLogPromise.then(([data1, data2]) => console.log("data of resolve(1)::", data1, "data of resolve(2)  with setTimout::", data2));
+immediateLogPromise.then(([data1, data2]) => 
+    console.log("data of resolve(1)::", data1,
+    "data of resolve(2)  with setTimout::", data2)
+);

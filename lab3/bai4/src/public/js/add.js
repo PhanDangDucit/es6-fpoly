@@ -1,7 +1,7 @@
 import api from "./api.js";
-(function(){
+// import editFunction from "./edit.js";
+
     const root = document.getElementById('root');
-    console.log(root);
     localStorage.setItem("products", JSON.stringify(api));
 
     const products = JSON.parse(localStorage.getItem("products"));
@@ -10,25 +10,20 @@ import api from "./api.js";
         const items = [...products];
         const result = items.map((item) => (
             `
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="single-product">
-                        <div class="part-1">
-                            <img src=${item.image} alt=""/>
-                            <ul>
-                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                            </ul>
+                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td class="p-4 w-4">
+                        <div class="flex items-center">
+                            <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="checkbox-table-1" class="sr-only">checkbox</label>
                         </div>
-                        <div class="part-2">
-                            <h3 class="product-title">${item.productName}</h3>
-                            <h4 class="product-old-price">${item.price}</h4>
-                            <h4 class="product-price">${item.priceSale}</h4>
-                            <a href="./detail.html?product=${item.id}" style="position: absolute; height: 100%; width: 100%; top: 0; left:0;"></a>
-                        </div>
-                    </div>
-                </div>
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${item.productName}</td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${item.price}</td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">${item.priceSale}</td>
+                    <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <a href="./edit.html?product=${item.id}" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                </tr>
             `
         ))
         return result;
@@ -39,8 +34,10 @@ import api from "./api.js";
 
     let modal = document.getElementById('modal');
     console.log(modal);
+
     let btn = document.getElementById('open-btn');
     console.log(btn);
+    
     let buttonClose = document.getElementById('close-btn');
     let btnSave = document.getElementById('ok-btn');
     console.log(buttonClose);
@@ -62,6 +59,7 @@ import api from "./api.js";
         const priceSaleNode = document.getElementById('priceSale');
         const priceSale = priceSaleNode.value;
         const id = Math.round(Math.random());
+        
         const newProduct = {
             id,
             productName,
@@ -83,4 +81,3 @@ import api from "./api.js";
         modal.className="fixed hidden top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-400";
         root.innerHTML = productsList.join("");
     };
-})()

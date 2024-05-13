@@ -6,11 +6,10 @@ fs.readFile(
     { encoding: 'utf8'},
     function(err, data) {
         console.log('Data loaded from disk', data);
+
         axios.get('https://jsonplaceholder.typicode.com/todos/1')
-        { 
-            console.log('Data downloaded from url', res.data);
-        }
-    );
+            .then(function(res) {
+                console.log('Data downloaded from url', res.data);
+            })
     }
-    );
-}
+)
