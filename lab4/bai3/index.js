@@ -2,14 +2,13 @@ var fs = require('fs');
 var axios = require('axios');
 
 fs.readFile(
-    './data.json',
+    './db.json',
     { encoding: 'utf8'},
-    function(err, data) {
+    async function(err, data) {
         console.log('Data loaded from disk', data);
 
-        axios.get('https://jsonplaceholder.typicode.com/todos/1')
-            .then(function(res) {
-                console.log('Data downloaded from url', res.data);
-            })
+        const datas = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+         
+        console.log('Data downloaded from url', datas.data);
     }
 )

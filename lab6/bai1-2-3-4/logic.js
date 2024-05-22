@@ -8,4 +8,3 @@ const sumNode = document.getElementById('sum');
 firstNameNode.innerHTML = method.lowercaseString(firstNameNode.innerText);
 lastNameNode.innerHTML = method.uppercaseString(lastNameNode.innerText);
 sumNode.innerHTML = sum(7, 4);
-
