@@ -22,4 +22,3 @@
 ### Chờ Firebase tạo project
 
 <img src="./file6.png">
-
