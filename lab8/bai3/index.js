@@ -1,22 +1,17 @@
 const http = require('http');
-// const { open } = require('node:fs/promises');
-const { getProducts, addProducts } = require('./firestore');
-let datas = [];
-async function getDatas() {
-    datas = await getProducts();
-    return datas;
-}
-
-addProducts();
+const { getProducts } = require('./firebaseConfig');
+// const cors = require('cors');
 
 const server = http.createServer(async(req, res)=>{
     console.log("Request is Incoming");
-    const responseData = await getDatas();
+    const responseData = await getProducts();
+    console.log("responseData::", responseData)
     const jsonContent = JSON.stringify(responseData);
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.end(jsonContent);
 })
+// server.use(cors())
 
-server.listen(4000, function() {
-    console.log('listening on port:: 4000')
+server.listen(5500, function() {
+    console.log('listening on port:: 5500');
 })
-

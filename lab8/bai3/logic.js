@@ -1,10 +1,17 @@
-
 const root = document.getElementById('root');
-console.log(root);
 
-async function makeList() {
-    // const items = [...arr];
-    const result = products.map((item) => (
+fetch('http://localhost:5500')
+    .then(res => res.json())
+    .then((data) => {
+        const productsList =[];
+        const newData = [...productsList, ...data];
+        const products = makeList(newData);
+        console.log(products);
+        root.innerHTML = products.join("");
+    })
+function makeList(productsList) {
+    console.log(productsList);
+    const result = productsList.map((item) => (
         `
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="single-product">
@@ -26,8 +33,6 @@ async function makeList() {
             </div>
         `
     ))
+    // console.log(result);
     return result;
 }
-
-const products = makeList();
-root.innerHTML = products.join("");

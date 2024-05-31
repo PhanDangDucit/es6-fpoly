@@ -1,0 +1,21 @@
+- Export database from firebase:
+
+- Use "Node-firestore-import-export" library.
+
+- Create a key from firebase --> Save file is download
+
+- Export file
+
+```bash
+firestore-export -a D:\Education\FPT_Polytechnic\ecmascript\lab-es6\lab8\bai3\credentials-firebase.json -b D:\Education\FPT_Polytechnic\ecmascript\lab-es6\lab8\bai3\user-exported.json -n users -p
+```
+
+- Remove "Node-firestore-import-export"
+
+
+# Import
+```bash
+firestore-import -a D:\Education\FPT_Polytechnic\ecmascript\lab-es6\lab8\bai4\credentials-firebase.json -b D:\Education\FPT_Polytechnic\ecmascript\lab-es6\lab8\bai4\db.json -n products
+```
+
+- [Fix git with google credentials](https://docs.github.com/en/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection )
